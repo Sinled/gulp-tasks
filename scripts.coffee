@@ -1,6 +1,7 @@
 gulp = require 'gulp'
 sourcemaps = require 'gulp-sourcemaps'
 traceur = require 'gulp-traceur'
+errlog = require './utils/errlog'
 config = require '../config'
   .scripts
 
@@ -10,3 +11,4 @@ gulp.task 'scripts', ->
     .pipe traceur()
     .pipe sourcemaps.write()
     .pipe gulp.dest config.dest
+    .on 'error', errlog

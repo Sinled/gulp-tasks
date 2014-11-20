@@ -1,6 +1,7 @@
 gulp = require 'gulp'
 stylus = require 'gulp-stylus'
 autoprefixer = require 'gulp-autoprefixer'
+errlog = require './utils/errlog'
 config = require '../config'
   .styles
 
@@ -10,3 +11,4 @@ gulp.task 'styles', ->
     .pipe stylus()
     .pipe autoprefixer config.autoprefixer
     .pipe gulp.dest config.dest
+    .on 'error', errlog
